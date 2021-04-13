@@ -1,8 +1,9 @@
 """
-Exports any links I sent in discord messages
+Indexes any links I sent in discord messages
 """
 
-from promnesia.common import Results, Visit, Loc, extract_urls
+from promnesia.common import Results, Visit, Loc
+from promnesia.utils import extract_urls_http
 
 BASE = "https://discord.com"
 
@@ -13,7 +14,7 @@ def index() -> Results:
     for m in messages():
         # extract any URLs from content
         # hmm - extract URLs from attachments. Probably not very useful
-        urls = extract_urls(m.content)
+        urls = extract_urls_http(m.content)
 
         if len(urls) == 0:
             continue
