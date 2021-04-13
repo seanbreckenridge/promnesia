@@ -7,7 +7,7 @@ This lets me use [my own HPI modules](https://github.com/seanbreckenridge/HPI) a
 - Any podcasts/videos I watched with mpv (tracked by [this](https://github.com/seanbreckenridge/mpv-history-daemon))
 - Some links from some [old forums](https://github.com/seanbreckenridge/forum_parser)
 - My Google Takeout - Youtube Comments/Videos
-- Anything tracked by my [trakt](https://github.com/seanbreckenridge/traktexport) (Movies, Episodes)
+- Anything tracked by my [trakt](https://github.com/seanbreckenridge/traktexport) (Movies, TV Show Episodes)
 - Any URLs in my shell histories (zsh, [ttt](https://github.com/seanbreckenridge/ttt))
 
 [My Promnesia config file](https://sean.fish/d/promnesia/config.py)
