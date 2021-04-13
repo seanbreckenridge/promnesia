@@ -21,6 +21,6 @@ def index() -> Results:
                 url=u,
                 dt=e.dt,
                 context=e.todo.text,
-                locator=Loc.make(title=e.todo.text, href=u),
+                locator=Loc(title=e.todo.text, href=u),
             )
             emitted.add(key)

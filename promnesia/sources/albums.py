@@ -15,6 +15,7 @@ def index() -> Results:
         if a.discogs_url is not None and a.listened_on is not None:
             dt = datetime.combine(a.listened_on, datetime.min.time())
             title = f"{a.album_name} - {a.cover_artists}"
+            # TODO: add stringified description of album as context?
             yield Visit(
                 url=a.discogs_url,
                 dt=dt,

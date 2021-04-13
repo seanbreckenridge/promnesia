@@ -16,5 +16,5 @@ def index() -> Results:
                 url=u,
                 dt=m.dt,
                 context=m.message,
-                locator=Loc.make(title=f"SMS with {m.who} ({m.phone_number})"),
+                locator=Loc(title=f"Message with {m.who} ({m.phone_number})"),
             )

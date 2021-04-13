@@ -13,7 +13,8 @@ def index() -> Results:
 
     for m in messages():
         # extract any URLs from content
-        # hmm - extract URLs from attachments. Probably not very useful
+        # hmm - extract URLs from attachments.
+        # Probably not very useful unless I extract info from them with url_metadata or something
         urls = extract_urls_http(m.content)
 
         if len(urls) == 0:
@@ -30,7 +31,10 @@ def index() -> Results:
             desc = f"{s.server_name} - #{m.channel.name}"
             link = f"{BASE}/channels/{s.server_id}/{cid}/{m.message_id}"
 
-        loc = Loc.make(title=desc, href=link)
-
         for u in urls:
-            yield Visit(url=u, dt=m.timestamp, context=m.content, locator=loc)
+            yield Visit(
+                url=u,
+                dt=m.timestamp,
+                context=m.content,
+                locator=Loc(title=desc, href=link),
+            )

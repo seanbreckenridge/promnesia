@@ -16,5 +16,5 @@ def index() -> Results:
                 url=u,
                 dt=e.dt,
                 context=e.command,
-                locator=Loc(title=f"ttt: {e.command}", href=u),
+                locator=Loc(title=e.command, href=u),
             )

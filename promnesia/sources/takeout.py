@@ -39,7 +39,7 @@ def index() -> Results:
                     locator=Loc(title=e.desc, href=url),
                 )
         elif isinstance(e, HtmlEvent):
-            # TODO: regex out title and use it as locator title
+            # TODO: regex out title and use it as locator title?
             for url in filter(lambda u: "youtube.com/channel" not in u, e.links):
                 yield Visit(
                     url=url,

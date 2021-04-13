@@ -21,5 +21,5 @@ def index() -> Results:
                     url=url,
                     dt=e.dt,
                     context=e.body,
-                    locator=Loc.make(title=e.summary, href=e.link),
+                    locator=Loc(title=e.summary, href=e.link),
                 )

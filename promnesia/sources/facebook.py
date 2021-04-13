@@ -24,7 +24,7 @@ def index() -> Results:
                 yield Visit(
                     url=url,
                     dt=e.dt,
-                    locator=Loc.make(title=e.action or ""),
+                    locator=Loc(title=e.action or ""),
                     context=e.content,
                 )
         elif isinstance(e, Conversation):
@@ -34,7 +34,7 @@ def index() -> Results:
                         url=url,
                         dt=msg.dt,
                         context=msg.content,
-                        locator=Loc.make(title=msg.author),
+                        locator=Loc(title=msg.author),
                     )
         else:
             # ignore other events

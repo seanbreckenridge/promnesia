@@ -16,5 +16,5 @@ def index() -> Results:
                 url=url,
                 dt=c.committed_dt,
                 context=desc,
-                locator=Loc.make(title=f"commit - {c.repo} {c.sha}", href=c.repo),
+                locator=Loc(title=f"{c.repo} {c.sha}", href=c.repo),
             )
