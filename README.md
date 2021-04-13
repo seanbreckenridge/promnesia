@@ -14,6 +14,7 @@ It indexes any URLs it finds in:
 - SMS history, using [SMSBackupRestore](https://play.google.com/store/apps/details?id=com.riteshsahu.SMSBackupRestore&hl=en_US)
 - Git commits on my system
 - Github PRs/Issues/Comments, using [ghexport](https://github.com/karlicoss/ghexport)
+- Todo.txt files
 
 [My Promnesia config file](https://sean.fish/d/promnesia/config.py)
 
