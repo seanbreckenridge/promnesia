@@ -3,7 +3,7 @@ uses backups of my newsboat subscriptions
 to event source when I added/removed subscriptions
 """
 
-from promnesia.common import Results, Visit, Loc, extract_urls
+from promnesia.common import Results, Visit, Loc
 
 
 def index() -> Results:

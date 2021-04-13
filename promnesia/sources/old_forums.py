@@ -3,19 +3,19 @@ Exposes post/metadata from random forums I used in the past
 https://github.com/seanbreckenridge/forum_parser
 """
 
-from promnesia.common import Results, Visit, Loc, extract_urls
+from promnesia.common import Results, Visit, Loc
+from promnesia.utils import extract_urls_http
 
 
 def index() -> Results:
     from my.old_forums import history
 
-    for post in history():
-        for url in extract_urls(post.post_contents):
+    for p in history():
+        desc = f"{p.forum_name} - {p.post_title}"
+        for url in extract_urls_http(p.post_contents):
             yield Visit(
                 url=url,
-                dt=post.dt,
-                locator=Loc(
-                    title=f"{post.forum_name} - {post.post_title}", href=post.post_url
-                ),
-                context=post.post_contents,
+                dt=p.dt,
+                locator=Loc(title=desc, href=p.post_url),
+                context=p.post_contents,
             )

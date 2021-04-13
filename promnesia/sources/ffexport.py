@@ -5,7 +5,7 @@ https://github.com/seanbreckenridge/ffexport
 
 # named diffrently to prevent conflicts with upstream promnesia
 
-from promnesia.common import Results, Visit, Loc, extract_urls
+from promnesia.common import Results, Visit, Loc
 
 
 def index() -> Results:
