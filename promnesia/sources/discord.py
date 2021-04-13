@@ -1,16 +1,31 @@
 from promnesia.common import Results, Visit, Loc, extract_urls
 
+BASE = "https://discord.com"
+
 
 def index() -> Results:
     from my.discord import messages
 
     for m in messages():
-        text = m.content
-        urls = extract_urls(text)
+        # extract any URLs from content
+        # hmm - extract URLs from attachments. Probably not very useful
+        urls = extract_urls(m.content)
+
         if len(urls) == 0:
             continue
-        # todo:b href?
-        loc = Loc.make(title=f"message in {m.channel.name} - {m.channel.server_name}")
+
+        cid = m.channel.channel_id
+        # no server info, probably a PM
+        if m.channel.server is None:
+            desc = m.channel.name or f"message ({cid})"
+            link = f"{BASE}/channels/@me/{cid}/{m.message_id}"
+        else:
+            s = m.channel.server
+            # has a server object, in a server
+            desc = f"{s.server_name} - #{m.channel.name}"
+            link = f"{BASE}/channels/{s.server_id}/{cid}/{m.message_id}"
+
+        loc = Loc.make(title=desc, href=link)
 
         for u in urls:
-            yield Visit(url=u, dt=m.timestamp, context=text, locator=loc)
+            yield Visit(url=u, dt=m.timestamp, context=m.content, locator=loc)
