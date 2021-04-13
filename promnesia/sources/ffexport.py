@@ -16,5 +16,4 @@ def index() -> Results:
             url=v.url,
             dt=v.visit_date,
             locator=Loc(title=v.title or f"Firefox - {v.url}", href=v.url),
-            context=v.description,
         )
