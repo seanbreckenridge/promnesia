@@ -1,3 +1,7 @@
+"""
+Exports any links I sent in discord messages
+"""
+
 from promnesia.common import Results, Visit, Loc, extract_urls
 
 BASE = "https://discord.com"
