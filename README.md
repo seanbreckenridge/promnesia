@@ -15,6 +15,7 @@ It indexes any URLs it finds in:
 - Git commits on my system
 - Github PRs/Issues/Comments, using [ghexport](https://github.com/karlicoss/ghexport)
 - Todo.txt files
+- Albums [I've listened to](https://sean.fish/s/albums)
 
 [My Promnesia config file](https://sean.fish/d/promnesia/config.py)
 
@@ -22,7 +23,6 @@ It indexes any URLs it finds in:
 
 Add Install Instructions (namespace package)
 
-Create Indexers for:
+Create Indexer for:
 
 - Facebook
-- Albums
