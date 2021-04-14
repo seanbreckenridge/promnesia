@@ -28,6 +28,6 @@ To Install:
 
 - Assumes you have both [upstream HPI](https://github.com/karlicoss/HPI) and [my HPI](https://github.com/seanbreckenridge/HPI) modules installed
 - Setup [upstream `promnesia`](https://github.com/karlicoss/promnesia)
-- `python3 -m pip install 'git+https://github.com/seanbreckenridge/promnesia`
+- Install this; `python3 -m pip install git+https://github.com/seanbreckenridge/promnesia`
 
 In your config file, to enable these sources, import from `promnesia_sean`. You can see my [config file](https://sean.fish/d/promnesia/config.py) as an example
