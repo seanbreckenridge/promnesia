@@ -3,8 +3,6 @@ firefox export - my browsing history
 https://github.com/seanbreckenridge/ffexport
 """
 
-# named diffrently to prevent conflicts with upstream promnesia
-
 from promnesia.common import Results, Visit, Loc
 
 

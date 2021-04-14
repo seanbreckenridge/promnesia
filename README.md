@@ -20,7 +20,14 @@ It indexes any URLs it finds in my:
 
 [My Promnesia config file](https://sean.fish/d/promnesia/config.py)
 
-### TODO
+### Install
 
-Add Install Instructions (namespace package)
+For the time being, this doesn't install as a namespace package alongside `promnesia`, it just installs a separate module, `promnesia_sean`. See the comments [here](https://github.com/karlicoss/promnesia/pull/225) for more info.
 
+To Install:
+
+- Assumes you have both [upstream HPI](https://github.com/karlicoss/HPI) and [my HPI](https://github.com/seanbreckenridge/HPI) modules installed
+- Setup the [upstream `promnesia`](https://github.com/karlicoss/promnesia)
+- `python3 -m pip install 'git+https://github.com/seanbreckenridge/promnesia`
+
+In your config file, to enable these sources, import from `promnesia_sean`. You can see my [config file](https://sean.fish/d/promnesia/config.py) as an example

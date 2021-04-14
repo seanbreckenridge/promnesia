@@ -4,7 +4,7 @@ Exported using https://play.google.com/store/apps/details?id=com.riteshsahu.SMSB
 """
 
 from promnesia.common import Visit, Loc, Results
-from promnesia.utils import extract_urls_http
+from ..utils import extract_urls_http
 
 
 def index() -> Results:

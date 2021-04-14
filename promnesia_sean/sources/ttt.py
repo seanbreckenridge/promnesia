@@ -4,7 +4,7 @@ https://github.com/seanbreckenridge/ttt
 """
 
 from promnesia.common import Visit, Loc, Results
-from promnesia.utils import extract_urls_http
+from ..utils import extract_urls_http
 
 
 def index() -> Results:

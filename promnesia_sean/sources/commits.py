@@ -3,7 +3,7 @@ Export any links in git commit messages
 """
 
 from promnesia.common import Results, Visit, Loc
-from promnesia.utils import extract_urls_http
+from ..utils import extract_urls_http
 
 
 def index() -> Results:
