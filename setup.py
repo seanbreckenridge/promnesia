@@ -8,6 +8,7 @@ def main() -> None:
         name=pkg,
         zip_safe=False,
         packages=pkgs,
+        package_data={pkg: ["py.typed"]},
         url="https://github.com/seanbreckenridge/promnesia",
         author="Sean Breckenridge",
         author_email="seanbrecke@gmail.com",

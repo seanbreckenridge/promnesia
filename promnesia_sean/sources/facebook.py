@@ -11,7 +11,6 @@ def index() -> Results:
     from my.facebook import events
     from my.facebook import (
         Post,
-        Comment,
         Conversation,
     )
 
