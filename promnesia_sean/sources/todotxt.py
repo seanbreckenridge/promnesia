@@ -4,8 +4,7 @@ Extracts links from my todo.txt files
 
 from typing import Set, Tuple
 
-from promnesia.common import Visit, Loc, Results
-from ..utils import extract_urls_http
+from promnesia.common import Visit, Loc, Results, iter_urls
 
 
 def index() -> Results:
@@ -13,7 +12,7 @@ def index() -> Results:
 
     emitted: Set[Tuple[str, str]] = set()
     for e in events():
-        for u in extract_urls_http(e.todo.text):
+        for u in iter_urls(e.todo.text):
             key = (e.todo.text, u)
             if key in emitted:
                 continue

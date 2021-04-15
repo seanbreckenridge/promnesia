@@ -2,15 +2,14 @@
 Export any links in git commit messages
 """
 
-from promnesia.common import Results, Visit, Loc
-from ..utils import extract_urls_http
+from promnesia.common import Results, Visit, Loc, iter_urls
 
 
 def index() -> Results:
     from my.coding.commits import commits
 
     for c in commits():
-        for url in extract_urls_http(c.message):
+        for url in iter_urls(c.message):
             desc = f"{c.repo}\n{c.message}"
             yield Visit(
                 url=url,

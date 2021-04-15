@@ -3,8 +3,7 @@ Extracts links from my faceook GDPR export
 https://github.com/seanbreckenridge/HPI/tree/master/my/facebook.py
 """
 
-from promnesia.common import Visit, Loc, Results
-from ..utils import extract_urls_http
+from promnesia.common import Visit, Loc, Results, iter_urls
 
 
 def index() -> Results:
@@ -19,7 +18,7 @@ def index() -> Results:
             yield e
             continue
         elif isinstance(e, Post):
-            for url in extract_urls_http(e.content):
+            for url in iter_urls(e.content):
                 yield Visit(
                     url=url,
                     dt=e.dt,
@@ -28,7 +27,7 @@ def index() -> Results:
                 )
         elif isinstance(e, Conversation):
             for msg in e.messages:
-                for url in extract_urls_http(msg.content):
+                for url in iter_urls(msg.content):
                     yield Visit(
                         url=url,
                         dt=msg.dt,

@@ -2,8 +2,7 @@
 Indexes any links I sent in discord messages
 """
 
-from promnesia.common import Results, Visit, Loc
-from ..utils import extract_urls_http
+from promnesia.common import Results, Visit, Loc, extract_urls
 
 BASE = "https://discord.com"
 
@@ -15,7 +14,7 @@ def index() -> Results:
         # extract any URLs from content
         # hmm - extract URLs from attachments.
         # Probably not very useful unless I extract info from them with url_metadata or something
-        urls = extract_urls_http(m.content)
+        urls = extract_urls(m.content)
 
         if len(urls) == 0:
             continue
