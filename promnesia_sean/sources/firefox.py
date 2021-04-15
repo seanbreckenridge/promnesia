@@ -7,7 +7,7 @@ from promnesia.common import Results, Visit, Loc
 
 
 def index() -> Results:
-    from my.browsing import history
+    from my.firefox import history
 
     for v in history():
         yield Visit(
