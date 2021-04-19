@@ -5,7 +5,7 @@ This lets me use [my own HPI modules](https://github.com/seanbreckenridge/HPI) a
 It indexes any URLs it finds in my:
 
 - Discord messages, [parsed from the data export](https://github.com/seanbreckenridge/discord_data)
-- Browser history from backups of my firefox and chrome browser histories (using [ffexport](https://github.com/seanbreckenridge/ffexport))
+- Browser history from backups of my firefox/chrome/safari browser histories (using [browserexport](https://github.com/seanbreckenridge/browserexport))
 - Podcasts/Videos I watched with mpv (tracked by [this](https://github.com/seanbreckenridge/mpv-history-daemon))
 - Youtube videos/comments [parsed](https://github.com/seanbreckenridge/HPI/tree/master/my/google) from my [google takeout](https://takeout.google.com/)
 - Movies/TV Show episodes tracked by my [trakt](https://github.com/seanbreckenridge/traktexport)
