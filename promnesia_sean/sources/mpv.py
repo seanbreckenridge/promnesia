@@ -16,5 +16,5 @@ def index() -> Results:
                 url=url,
                 dt=play.start_time,
                 duration=int(play.listen_time),
-                locator=Loc(title=play.media_title or f"{play.path}", href=url),
+                locator=Loc(title=play.media_title or play.path, href=url),
             )
