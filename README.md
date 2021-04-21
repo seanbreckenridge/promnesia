@@ -17,7 +17,7 @@ It indexes any URLs it finds in my:
 - Facebook Messages
 - comments from some [old forums](https://github.com/seanbreckenridge/forum_parser) I used to be on
 
-[My Promnesia config file](https://sean.fish/d/promnesia/config.py)
+[My Promnesia config file](https://sean.fish/d/promnesia/config.py?dark)
 
 ### Install
 
@@ -29,4 +29,4 @@ To Install:
 - Setup [upstream `promnesia`](https://github.com/karlicoss/promnesia)
 - Install this; `python3 -m pip install git+https://github.com/seanbreckenridge/promnesia`
 
-In your config file, to enable these sources, import from `promnesia_sean`. You can see my [config file](https://sean.fish/d/promnesia/config.py) as an example
+In your config file, to enable these sources, import from `promnesia_sean`. You can see my [config file](https://sean.fish/d/promnesia/config.py?dark) as an example
