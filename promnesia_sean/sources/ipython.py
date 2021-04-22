@@ -9,6 +9,9 @@ def index() -> Results:
     from my.ipython import history
 
     for e in history():
+        if isinstance(e, Exception):
+            yield e
+            continue
         for u in iter_urls(e.command):
             yield Visit(
                 url=u,
