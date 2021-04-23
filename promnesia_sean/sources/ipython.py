@@ -2,7 +2,7 @@
 Extracts links from my ipython history
 """
 
-from promnesia.common import Visit, Loc, Results, iter_urls
+from promnesia.common import Visit, Loc, Results, iter_urls, logger
 
 
 def index() -> Results:
@@ -10,7 +10,7 @@ def index() -> Results:
 
     for e in history():
         if isinstance(e, Exception):
-            yield e
+            logger.exception(e)
             continue
         for u in iter_urls(e.command):
             yield Visit(
