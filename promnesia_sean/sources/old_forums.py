@@ -13,13 +13,13 @@ def index() -> Results:
         desc = f"{p.forum_name} - {p.post_title}"
         loc = Loc(title=desc, href=p.post_url)
         # visit directly to this link
-        yield Visit(url=p.post_url, dt=p.dt, locator=loc, context=p.post_contents)
+        yield Visit(url=p.post_url, dt=p.date, locator=loc, context=p.contents)
 
         # visit to any links I mentioned in the contents
-        for url in iter_urls(p.post_contents):
+        for url in iter_urls(p.contents):
             yield Visit(
                 url=url,
-                dt=p.dt,
+                dt=p.date,
                 locator=loc,
-                context=p.post_contents,
+                context=p.contents,
             )
