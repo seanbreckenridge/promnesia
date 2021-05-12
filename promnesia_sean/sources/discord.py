@@ -2,21 +2,37 @@
 Indexes any links I sent in discord messages
 """
 
-from promnesia.common import Results, Visit, Loc, extract_urls
+from typing import Optional, Set
+from promnesia.common import Results, Visit, Loc, iter_urls
 
 BASE = "https://discord.com"
 
 
-def index() -> Results:
+def index(*, render_markdown: bool = False) -> Results:
     from my.discord import messages
+
+    # TODO: optionally import? this would break if someone
+    # hasnt installed promnesia like pip3 install '.[all]' to
+    # to install the markdown module for promnesia
+    from promnesia.sources.markdown import TextParser, extract_from_text
 
     for m in messages():
         # hmm - extract URLs from attachments?
         # Probably not very useful unless I extract info from them with url_metadata or something
-        for u in extract_urls(m.content):
+
+        context: str = m.content
+
+        # if render_markdown flag is enabled, render the text as markdown (HTML)
+        if render_markdown:
+            context = TextParser(m.content)._doc_ashtml()
+
+        # permalink back to this discord message
+        loc = Loc.make(title=m.channel.description, href=m.link)
+
+        for u in iter_urls(m.content):
             yield Visit(
                 url=u,
                 dt=m.timestamp,
-                context=m.content,
-                locator=Loc(title=m.channel.description, href=m.link),
+                context=context,
+                locator=loc,
             )
