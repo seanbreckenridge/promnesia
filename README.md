@@ -15,6 +15,7 @@ It indexes any URLs it finds in my:
 - Albums [I've listened to](https://sean.fish/s/albums)
 - Facebook Messages
 - comments from some [old forums](https://github.com/seanbreckenridge/forum_parser) I used to be on
+- pageview history from the [twitch privacy export](https://github.com/seanbreckenridge/HPI/blob/master/my/twitch/gdpr.py)
 
 [My Promnesia config file](https://sean.fish/d/promnesia/config.py?dark)
 
