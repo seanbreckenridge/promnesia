@@ -9,7 +9,7 @@ It indexes any URLs it finds in my:
 - Podcasts/Videos I watched with mpv (tracked by [this](https://github.com/seanbreckenridge/mpv-history-daemon))
 - Youtube videos/comments [parsed](https://github.com/seanbreckenridge/HPI/tree/master/my/google) from my [google takeout](https://takeout.google.com/)
 - Movies/TV Show episodes tracked by my [trakt](https://github.com/seanbreckenridge/traktexport)
-- Shell histories (zsh, [ttt](https://github.com/seanbreckenridge/ttt), ipython)
+- Shell histories (zsh, bash, ipython, [ttt](https://github.com/seanbreckenridge/ttt))
 - Git commits on my system
 - Todo.txt files
 - Albums [I've listened to](https://sean.fish/s/albums)
