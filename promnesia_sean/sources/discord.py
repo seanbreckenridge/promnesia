@@ -2,7 +2,6 @@
 Indexes any links I sent in discord messages
 """
 
-from typing import Optional, Set
 from promnesia.common import Results, Visit, Loc, iter_urls
 
 BASE = "https://discord.com"
@@ -14,7 +13,7 @@ def index(*, render_markdown: bool = False) -> Results:
     # TODO: optionally import? this would break if someone
     # hasnt installed promnesia like pip3 install '.[all]' to
     # to install the markdown module for promnesia
-    from promnesia.sources.markdown import TextParser, extract_from_text
+    from promnesia.sources.markdown import TextParser
 
     for m in messages():
         # hmm - extract URLs from attachments?
