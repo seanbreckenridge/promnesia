@@ -16,6 +16,7 @@ It indexes any URLs it finds in my:
 - Facebook Messages
 - comments from some [old forums](https://github.com/seanbreckenridge/forum_parser) I used to be on
 - pageview history from the [twitch privacy export](https://github.com/seanbreckenridge/HPI/blob/master/my/twitch/gdpr.py)
+- video games I've logged to [grouvee](https://www.grouvee.com/), using [grouvee export](https://github.com/seanbreckenridge/grouvee_export)
 
 [My Promnesia config file](https://sean.fish/d/promnesia/config.py?dark)
 
