@@ -8,7 +8,6 @@ from promnesia.common import Visit, Loc, Results
 
 def index() -> Results:
     from my.grouvee import games
-    from grouvee_export.dal import Game
 
     for g in games():
         game_url = g.url
