@@ -4,8 +4,6 @@ Indexes any links I sent in discord messages
 
 from promnesia.common import Results, Visit, Loc, iter_urls
 
-BASE = "https://discord.com"
-
 
 def index(*, render_markdown: bool = False) -> Results:
     from my.discord import messages
