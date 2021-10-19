@@ -27,10 +27,14 @@ def parse_person(m: List[List[str]]) -> str:
 
 # cache this once every month, it takes about half an hour
 @mcachew(depends_on=lambda: date.today().month)
-def index(*, body_as_context: bool = False) -> Results:
-    from my.imap import mail
+def index(*, body_as_context: bool = False, use_raw_mail: bool = False) -> Results:
+    from my.imap import mail, raw_mail
 
-    for m in mail():
+    # if mechanism to remove duplicate messages isn't working because
+    # of differing formats, let the user specify the raw_mail function
+    mailfunc = raw_mail if use_raw_mail else mail
+
+    for m in mailfunc():
 
         if m.dt is None:
             continue
