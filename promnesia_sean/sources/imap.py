@@ -36,7 +36,10 @@ def index(*, body_as_context: bool = False, use_raw_mail: bool = False) -> Resul
 
     for m in mailfunc():
 
-        if m.dt is None:
+        # if date isn't my mail-parser (i.e. not RFC compliant), this
+        # tries to parse the Date header using the dateparser library
+        mdt = m.dt
+        if mdt is None:
             continue
 
         emitted: Set[str] = set()
@@ -64,7 +67,7 @@ def index(*, body_as_context: bool = False, use_raw_mail: bool = False) -> Resul
                 )
                 yield Visit(
                     url=url,
-                    dt=m.dt,
+                    dt=mdt,
                     context=ctx,
                     locator=Loc(title=desc, href=url),
                 )
