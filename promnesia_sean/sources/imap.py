@@ -32,7 +32,7 @@ def index(*, body_as_context: bool = False) -> Results:
 
     for m in mail():
 
-        if m.date is None:
+        if m.dt is None:
             continue
 
         emitted: Set[str] = set()
@@ -60,7 +60,7 @@ def index(*, body_as_context: bool = False) -> Results:
                 )
                 yield Visit(
                     url=url,
-                    dt=m.date,
+                    dt=m.dt,
                     context=ctx,
                     locator=Loc(title=desc, href=url),
                 )
