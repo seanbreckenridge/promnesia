@@ -1,15 +1,15 @@
 """
 Exposes post/metadata from random forums I used in the past
-https://github.com/seanbreckenridge/forum_parser
+https://github.com/seanbreckenridge/old_forums
 """
 
 from promnesia.common import Results, Visit, Loc, iter_urls
 
 
 def index() -> Results:
-    from my.old_forums import history
+    from my.old_forums import forum_posts
 
-    for p in history():
+    for p in forum_posts():
         desc = f"{p.forum_name} - {p.post_title}"
         loc = Loc(title=desc, href=p.post_url)
         # visit directly to this link
