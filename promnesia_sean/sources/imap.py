@@ -6,7 +6,7 @@ from typing import Set, List
 from datetime import date
 
 from my.core.common import mcachew
-from promnesia.common import Results, Visit, Loc, iter_urls
+from promnesia.common import Results, Visit, Loc, iter_urls, logger
 
 
 def parse_person(m: List[List[str]]) -> str:
@@ -25,9 +25,8 @@ def parse_person(m: List[List[str]]) -> str:
     return ""
 
 
-# cache this once every month, it takes about half an hour
-@mcachew(depends_on=lambda: date.today().month)
-def index(*, body_as_context: bool = False, use_raw_mail: bool = False) -> Results:
+# separated into another non-cachew function so testing is a bit easier
+def do_index(*, body_as_context: bool = False, use_raw_mail: bool = False) -> Results:
     from my.imap import mail, raw_mail
 
     # if mechanism to remove duplicate messages isn't working because
@@ -40,6 +39,7 @@ def index(*, body_as_context: bool = False, use_raw_mail: bool = False) -> Resul
         # tries to parse the Date header using the dateparser library
         mdt = m.dt
         if mdt is None:
+            logger.warning(f"{m._serialize()} has no datetime, ignoring...")
             continue
 
         emitted: Set[str] = set()
@@ -54,10 +54,6 @@ def index(*, body_as_context: bool = False, use_raw_mail: bool = False) -> Resul
                 if url in emitted:
                     continue
                 emitted.add(url)
-                # if the entire body is included as the context, for large enough IMAP
-                # sync dirs (e.g. mine) this makes the promnesia index about 300 gigabytes
-                # therefore, the default is to just use the filepath as the context,
-                # and I can go look at it if I want to
                 ctx = (
                     body
                     if body_as_context
@@ -71,3 +67,9 @@ def index(*, body_as_context: bool = False, use_raw_mail: bool = False) -> Resul
                     context=ctx,
                     locator=Loc(title=desc, href=url),
                 )
+
+
+# cache this once every month, it takes about half an hour
+@mcachew(depends_on=lambda: date.today().month)
+def index(*, body_as_context: bool = False, use_raw_mail: bool = False) -> Results:
+    yield from do_index(body_as_context=body_as_context, use_raw_mail=use_raw_mail)
