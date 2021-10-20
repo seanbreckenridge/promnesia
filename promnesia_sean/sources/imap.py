@@ -39,7 +39,7 @@ def do_index(*, body_as_context: bool = False, use_raw_mail: bool = False) -> Re
         # tries to parse the Date header using the dateparser library
         mdt = m.dt
         if mdt is None:
-            logger.warning(f"{m._serialize()} has no datetime, ignoring...")
+            logger.debug(f"no parsed datetime from {m._serialize()}, ignoring...")
             continue
 
         emitted: Set[str] = set()
