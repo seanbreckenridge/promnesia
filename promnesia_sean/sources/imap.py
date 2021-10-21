@@ -3,7 +3,7 @@ Indexes any links found in my emails
 """
 
 import os
-from typing import Set, List, Iterator
+from typing import Set, List, Iterator, Tuple
 from datetime import date
 from email.message import Message
 
@@ -43,19 +43,30 @@ IGNORED_CONTENT_PREFIXES = set(
 )
 
 
-def parse_person(m: List[List[str]]) -> str:
+def describe_person(p: Tuple[str, str]) -> str:
     """
-    e.g.:
-    [
-        (
-            "Person",
-            "emailhere@gmail.com"
-        )
-    ]
+    (
+        "Person",
+        "emailhere@gmail.com"
+    )
     converts to
     Person <emailhere@gmail.com>
+    if theres no 'Person' text, it
+    just becomes:
+    emailhere@gmail.com
     """
-    return ", ".join(f"{acc[0]} <{acc[1]}>" for acc in m)
+    if p[0].strip():
+        return f"{p[0]} <{p[1]}>"
+    else:
+        return p[1]
+
+
+def describe_persons(m: List[Tuple[str, str]]) -> str:
+    """
+    >>> [('Google', 'no-reply@accounts.google.com'), ('Github', 'no-reply@github.com')]
+    'Google <no-reply@accounts.google.com>, Github <no-reply@github.com>'
+    """
+    return ", ".join([describe_person(p) for p in m])
 
 
 def _get_msg_subparts(m: Message) -> Iterator[Message]:
@@ -85,11 +96,8 @@ def do_index(*, use_raw_mail: bool = False) -> Results:
         # mail-specific emitted set, only pull the same URL from one file once
         emitted: Set[str] = set()
 
-        from_desc = parse_person(m.from_)
-        to_desc = parse_person(m.to)
-
-        headers_ctx = f"""From: {parse_person(m.from_)}
-To: {parse_person(m.to)}
+        headers_ctx = f"""From: {describe_persons(m.from_)}
+To: {describe_persons(m.to)}
 Subject: {m.subject}
 
 """
