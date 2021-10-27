@@ -1,51 +1,37 @@
 """
-uses my forked google takeout parser
-https://github.com/seanbreckenridge/HPI/tree/master/my/google
+Uses https://github.com/seanbreckenridge/google_takeout_parser
 """
 
 from promnesia.common import Visit, Loc, Results
 
 
 def index() -> Results:
-    from my.google import events
-    from my.google.models import (
-        HtmlComment,
-        HtmlEvent,
-        LikedVideo,
-        AppInstall,
-        Location,
-    )
+    from my.google_takeout import events
+    from google_takeout_parser.models import Activity, YoutubeComment, LikedYoutubeVideo
 
     for e in events():
-        if isinstance(e, Location):
-            continue
-        elif isinstance(e, AppInstall):
-            continue
-        elif isinstance(e, LikedVideo):
-            yield Visit(
-                url=e.link,
-                dt=e.dt,
-                context=e.desc,
-                locator=Loc(title=e.title, href=e.link),
-            )
-        elif isinstance(e, HtmlComment):
-            for url in e.links:
+        if isinstance(e, LikedYoutubeVideo):
+            yield Visit(url=e.link, dt=e.dt, context=e.desc, locator=Loc(title=e.title))
+        elif isinstance(e, YoutubeComment):
+            for url in e.urls:
                 # todo: use url_metadata to improve locator?
                 # or maybe just extract first sentence?
                 yield Visit(
-                    url=url,
-                    dt=e.dt,
-                    context=e.desc,
-                    locator=Loc(title=e.desc, href=url),
+                    url=url, dt=e.dt, context=e.content, locator=Loc(title=e.content)
                 )
-        elif isinstance(e, HtmlEvent):
+        elif isinstance(e, Activity):
             # TODO: regex out title and use it as locator title?
-            for url in filter(lambda u: "youtube.com/channel" not in u, e.links):
+            if e.titleUrl is not None:
                 yield Visit(
-                    url=url,
-                    dt=e.dt,
-                    context=e.desc,
-                    locator=Loc(title=e.desc, href=url),
+                    context=e.header,
+                    url=e.titleUrl,
+                    dt=e.time,
+                    locator=Loc(title=e.title),
                 )
-        else:
-            yield RuntimeError(f"Unhandled visit: {repr(e)}")
+            for s in e.subtitles:
+                if s[1] is not None:
+                    if "youtube.com/channel" in s[1]:
+                        continue
+                    yield Visit(
+                        url=s[1], context=s[0], dt=e.time, locator=Loc(title=e.title)
+                    )
