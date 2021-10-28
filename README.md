@@ -7,7 +7,7 @@ It indexes any URLs it finds in my:
 - Discord messages, [parsed from the data export](https://github.com/seanbreckenridge/discord_data)
 - Browser history from backups of my firefox/chrome/safari browser histories (using [browserexport](https://github.com/seanbreckenridge/browserexport))
 - Podcasts/Videos I watched with mpv (tracked by [this](https://github.com/seanbreckenridge/mpv-history-daemon))
-- Youtube videos/comments [parsed](https://github.com/seanbreckenridge/HPI/tree/master/my/google) from my [google takeout](https://takeout.google.com/)
+- Youtube videos/comments parsed by [google_takeout_parser](https://github.com/seanbreckenridge/google_takeout_parser) from my [google takeout](https://takeout.google.com/)
 - Movies/TV Show episodes tracked by my [trakt](https://github.com/seanbreckenridge/traktexport)
 - Anime/Manga using [malexport](https://github.com/seanbreckenridge/malexport)
 - Shell histories (zsh, bash, ipython, [ttt](https://github.com/seanbreckenridge/ttt))
