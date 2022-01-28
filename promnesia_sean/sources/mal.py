@@ -16,7 +16,7 @@ def index() -> Results:
     min_time = datetime.min.time()
 
     def _extract_datetime(info: Union[AnimeData, MangaData]) -> Optional[datetime]:
-        d: Optional[date] = info.finish_date or info.start_date
+        d: Optional[date] = info.XMLData.finish_date or info.XMLData.start_date
         dt: datetime
         if d is not None:
             return datetime.combine(d, min_time)
@@ -36,14 +36,14 @@ def index() -> Results:
             # append both the URL with the metadata in the URL
             # and the one without
             urls = [f"https://myanimelist.net/{_type}/{item.id}"]
-            if item.url is not None:
-                urls.append(item.url)
+            if item.JSONList is not None and item.JSONList.url is not None:
+                urls.append(item.JSONList.url)
             for u in urls:
                 yield Visit(
                     url=u,
                     dt=dt,
-                    locator=Loc(title=item.title, href=u),
-                    context=item.title,
+                    locator=Loc(title=item.XMLData.title, href=u),
+                    context=item.XMLData.title,
                 )
 
     for p in posts():
