@@ -7,7 +7,7 @@ from promnesia.common import Visit, Loc, Results
 
 
 def index() -> Results:
-    from my.trakt import history
+    from my.trakt.export import history
     from traktexport.dal import Movie, Episode
 
     for e in history():

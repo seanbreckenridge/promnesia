@@ -10,7 +10,7 @@ from promnesia.common import Visit, Loc, Results, iter_urls
 
 
 def index() -> Results:
-    from my.mal import anime, manga, posts
+    from my.mal.export import anime, manga, posts
     from malexport.parse.combine import AnimeData, MangaData
 
     min_time = datetime.min.time()

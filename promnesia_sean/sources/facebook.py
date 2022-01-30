@@ -7,11 +7,7 @@ from promnesia.common import Visit, Loc, Results, iter_urls
 
 
 def index() -> Results:
-    from my.facebook import events
-    from my.facebook import (
-        Post,
-        Conversation,
-    )
+    from my.facebook.gdpr import events, Post, Conversation
 
     for e in events():
         if isinstance(e, Exception):

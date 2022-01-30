@@ -6,7 +6,7 @@ from promnesia.common import Results, Visit, Loc, iter_urls
 
 
 def index(*, render_markdown: bool = False) -> Results:
-    from my.discord import messages
+    from my.discord.data_export import messages
 
     # TODO: optionally import? this would break if someone
     # hasnt installed promnesia like pip3 install '.[all]' to

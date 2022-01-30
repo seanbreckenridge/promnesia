@@ -9,7 +9,7 @@ from promnesia.common import Visit, Loc, Results
 
 
 def index() -> Results:
-    from my.albums import history
+    from my.nextalbums import history
 
     for a in history():
         if a.discogs_url is not None and a.listened_on is not None:
