@@ -7,7 +7,7 @@ from promnesia.common import Visit, Loc, Results
 
 
 def index() -> Results:
-    from my.mpv import history
+    from my.mpv.history_daemon import history
 
     for play in history():
         if play.is_stream:

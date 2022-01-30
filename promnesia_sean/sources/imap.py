@@ -81,7 +81,7 @@ def _get_msg_subparts(m: Message) -> Iterator[Message]:
 
 # separated into another non-cachew function so testing is a bit easier
 def do_index(*, use_raw_mail: bool = False) -> Results:
-    from my.imap import mail, raw_mail
+    from my.mail.imap import mail, raw_mail
 
     # if mechanism to remove duplicate messages isn't working because
     # of differing formats, let the user specify the raw_mail function

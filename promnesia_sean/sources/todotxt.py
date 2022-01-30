@@ -8,7 +8,7 @@ from promnesia.common import Visit, Loc, Results, iter_urls
 
 
 def index() -> Results:
-    from my.todotxt import events
+    from my.todotxt.file_backups import events
 
     emitted: Set[Tuple[str, str]] = set()
     for e in events():
