@@ -1,13 +1,14 @@
 """
 merges my browsing history
 https://github.com/seanbreckenridge/browserexport
+https://github.com/karlicoss/HPI/tree/master/my/browser
 """
 
 from promnesia.common import Results, Visit, Loc
 
 
 def index() -> Results:
-    from my.browser.export import history
+    from my.browser.all import history
 
     # TODO: expose a better locator from browserexport?
     for v in history():
