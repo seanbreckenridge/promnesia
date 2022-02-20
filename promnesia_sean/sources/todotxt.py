@@ -12,14 +12,15 @@ def index() -> Results:
 
     emitted: Set[Tuple[str, str]] = set()
     for e in events():
-        for u in iter_urls(e.todo.description):
-            key = (e.todo.description, u)
+        text = e.todo.bare_description()
+        for u in iter_urls(text):
+            key = (text, u)
             if key in emitted:
                 continue
             yield Visit(
                 url=u,
                 dt=e.dt,
                 context=e.todo.description,
-                locator=Loc(title=e.todo.description, href=u),
+                locator=Loc(title=str(e.todo), href=u),
             )
             emitted.add(key)
