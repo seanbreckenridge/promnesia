@@ -11,7 +11,7 @@ def index() -> Results:
 
     for e in events():
         # if I added this as a subscription
-        if e.added:
+        if e.action == "added":
             yield Visit(
                 url=e.url, dt=e.dt, locator=Loc(title=f"Added {e.url}", href=e.url)
             )
