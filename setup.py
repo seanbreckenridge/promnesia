@@ -1,9 +1,17 @@
+from typing import Iterator
 from setuptools import setup, find_namespace_packages  # type: ignore
+
+
+# TODO: should probably migrate to src/promnesia_sean to fix this issue?
+def subpackages() -> Iterator[str]:
+    for p in find_namespace_packages("."):
+        if p.startswith("promnesia_sean"):
+            yield p
 
 
 def main() -> None:
     pkg = "promnesia_sean"
-    pkgs = find_namespace_packages(include=[pkg])
+    pkgs = list(subpackages())
     setup(
         name=pkg,
         zip_safe=False,
