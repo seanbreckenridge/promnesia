@@ -32,4 +32,6 @@ To Install:
 - Setup [upstream `promnesia`](https://github.com/karlicoss/promnesia)
 - Install this; `python3 -m pip install git+https://github.com/seanbreckenridge/promnesia`
 
+If you have issues importing/installing this, try a local install isntead. See [troubleshooting docs](https://github.com/seanbreckenridge/HPI/blob/master/doc/TROUBLESHOOTING_INSTALLS.md)
+
 In your config file, to enable these sources, import from `promnesia_sean`. You can see my [config file](https://sean.fish/d/promnesia/config.py?dark) as an example
