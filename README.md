@@ -13,7 +13,7 @@ It indexes any URLs it finds in my:
 - Shell histories (zsh, bash, ipython, [ttt](https://github.com/seanbreckenridge/ttt))
 - Git commits on my system
 - Todo.txt files
-- Mail, using local IMAP backups
+- Mail, using local IMAP/MBOX backups
 - Albums [I've listened to](https://sean.fish/s/albums)
 - Facebook Messages
 - comments from some [old forums](https://github.com/seanbreckenridge/forum_parser) I used to be on
