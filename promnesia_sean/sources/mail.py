@@ -30,7 +30,7 @@ def do_index() -> Results:
         assert m.filepath is not None
 
         for payload, content_type in parts_parser.tag_message_subparts(m.message):
-            if content_type == parts_parser.EmailText.html:
+            if content_type == "html":
                 for url, text in extract_urls_from_html(payload):
                     if url in emitted:
                         continue
@@ -43,7 +43,7 @@ def do_index() -> Results:
                         locator=Loc.file(m.filepath),
                     )
                     emitted.add(url)
-            elif content_type == parts_parser.EmailText.text:
+            elif content_type == "text":
                 # iterate line by line, so we can embed a line of the plaintext
                 # as context for where this URL was found
                 for line in payload.split(os.linesep):
