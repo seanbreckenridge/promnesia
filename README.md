@@ -1,6 +1,6 @@
 ## promnesia
 
-This lets me use [my own HPI modules](https://github.com/seanbreckenridge/HPI) as additional `Source`s for [promnesia](https://github.com/karlicoss/promnesia).
+This lets me use [my HPI modules](https://github.com/seanbreckenridge/HPI) as additional `Source`s for [promnesia](https://github.com/karlicoss/promnesia).
 
 It indexes any URLs it finds in my:
 
@@ -19,7 +19,7 @@ It indexes any URLs it finds in my:
 - pageview history from the [twitch privacy export](https://github.com/seanbreckenridge/HPI/blob/master/my/twitch/gdpr.py)
 - video games I've logged to [grouvee](https://www.grouvee.com/), using [grouvee export](https://github.com/seanbreckenridge/grouvee_export)
 
-[My Promnesia config file](https://sean.fish/d/promnesia/config.py?dark)
+To use these, import the source and add it to the `SOURCES` array in your promnesia config. See mine [here](https://sean.fish/d/promnesia/config.py?dark)
 
 ### Install
 
@@ -27,8 +27,8 @@ For the time being, this doesn't install as a namespace package alongside `promn
 
 To Install:
 
-- Assumes you have both [upstream HPI](https://github.com/karlicoss/HPI) and [my HPI](https://github.com/seanbreckenridge/HPI) modules installed
-- Setup [upstream `promnesia`](https://github.com/karlicoss/promnesia)
+- Assumes you have both [karlicoss/HPI](https://github.com/karlicoss/HPI) and [my HPI](https://github.com/seanbreckenridge/HPI) modules installed
+- Setup [`promnesia`](https://github.com/karlicoss/promnesia)
 - Install this; `python3 -m pip install git+https://github.com/seanbreckenridge/promnesia`
 
 If you have issues importing/installing this, try a local install isntead. See [troubleshooting docs](https://github.com/seanbreckenridge/HPI/blob/master/doc/TROUBLESHOOTING_INSTALLS.md)
