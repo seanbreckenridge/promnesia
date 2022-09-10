@@ -7,10 +7,16 @@ from typing import Optional, Union, List, Callable
 from datetime import datetime, date
 
 from promnesia.common import Visit, Loc, Results, iter_urls
+from promnesia.sources.html import extract_urls_from_html
+from promnesia.sources.markdown import HTML_MARKER
+
+
+def _msg_from_title(username: str) -> str:
+    return f"""<p>MAL message from {username}</p>"""
 
 
 def index() -> Results:
-    from my.mal.export import anime, manga, posts
+    from my.mal.export import anime, manga, posts, threads
     from malexport.parse.combine import AnimeData, MangaData
 
     min_time = datetime.min.time()
@@ -59,3 +65,21 @@ def index() -> Results:
             locator=Loc(title=p.title, href=p.url),
             context=p.body,
         )
+
+    for t in threads():
+        # NOTE: this arent real URLs, its pretty difficult to reconstruct the thread id since it requires
+        # saving data from every page of the thread individually
+        u = f"https://myanimelist.net/mymessages.php?go=read&threadid={t.thread_id}"
+        yield Visit(url=u, dt=t.messages[-1].at, locator=Loc(title=t.subject, href=u))
+
+        for m in t.messages:
+            subject = f" ({t.subject.strip()})" if t.subject.strip() else ""
+            for url, _ in extract_urls_from_html(m.content):
+                yield Visit(
+                    url=url,
+                    dt=m.at,
+                    locator=Loc(
+                        title=f"MAL Message from {m.username}" + subject, href=u
+                    ),
+                    context=HTML_MARKER + _msg_from_title(m.username) + m.content,
+                )
