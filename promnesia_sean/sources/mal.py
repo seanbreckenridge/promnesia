@@ -17,7 +17,6 @@ def index() -> Results:
 
     def _extract_datetime(info: Union[AnimeData, MangaData]) -> Optional[datetime]:
         d: Optional[date] = info.XMLData.finish_date or info.XMLData.start_date
-        dt: datetime
         if d is not None:
             return datetime.combine(d, min_time)
         else:
@@ -51,12 +50,12 @@ def index() -> Results:
             yield Visit(
                 url=u,
                 dt=p.created_at,
-                locator=Loc(title=p.title, href=f"MyAnimeList - {p.title}"),
+                locator=Loc(title=p.title, href=u),
                 context=p.body,
             )
         yield Visit(
             url=p.url,
             dt=p.created_at,
-            locator=Loc(title=p.title, href=f"MyAnimeList {u.title}"),
+            locator=Loc(title=p.title, href=p.url),
             context=p.body,
         )
