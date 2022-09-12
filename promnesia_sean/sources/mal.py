@@ -6,13 +6,23 @@ https://github.com/seanbreckenridge/malexport
 from typing import Optional, Union, List, Callable
 from datetime import datetime, date
 
-from promnesia.common import Visit, Loc, Results, iter_urls
+
+from malexport.parse.messages import Thread
+
+from promnesia.common import Visit, Loc, Results, iter_urls, logger
 from promnesia.sources.html import extract_urls_from_html
 from promnesia.sources.markdown import HTML_MARKER
 
 
 def _msg_from_title(username: str) -> str:
     return f"""<p>MAL message from {username}</p>"""
+
+
+def _thread_date(tr: Thread) -> Optional[datetime]:
+    for m in reversed(tr.messages):
+        if m.at:
+            return m.at
+    return None
 
 
 def index() -> Results:
@@ -70,9 +80,14 @@ def index() -> Results:
         # NOTE: this arent real URLs, its pretty difficult to reconstruct the thread id since it requires
         # saving data from every page of the thread individually
         u = f"https://myanimelist.net/mymessages.php?go=read&threadid={t.thread_id}"
-        yield Visit(url=u, dt=t.messages[-1].at, locator=Loc(title=t.subject, href=u))
+        tdt = _thread_date(t)
+        if tdt is not None:
+            yield Visit(url=u, dt=tdt, locator=Loc(title=t.subject, href=u))
 
         for m in t.messages:
+            if m.at is None:
+                logger.debug(f"No date for {m}, ignoring...")
+                continue
             subject = f" ({t.subject.strip()})" if t.subject.strip() else ""
             for url, _ in extract_urls_from_html(m.content):
                 yield Visit(
