@@ -10,7 +10,6 @@ from promnesia.common import Results, Visit, Loc
 def index() -> Results:
     from my.browser.all import history
 
-    # TODO: expose a better locator from browserexport?
     for v in history():
         desc = None
         if v.metadata is not None:
