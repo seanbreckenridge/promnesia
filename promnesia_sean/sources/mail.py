@@ -17,7 +17,6 @@ def do_index() -> Results:
     import my.mail.parse_parts as parts_parser
 
     for m in mail():
-
         if m.dt is None:
             logger.debug(f"could not parse a date from {m._serialize()}, ignoring...")
             continue
