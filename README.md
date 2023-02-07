@@ -19,7 +19,7 @@ It indexes any URLs it finds in my:
 - pageview history from the [twitch privacy export](https://github.com/seanbreckenridge/HPI/blob/master/my/twitch/gdpr.py)
 - video games I've logged to [grouvee](https://www.grouvee.com/), using [grouvee export](https://github.com/seanbreckenridge/grouvee_export)
 
-To use these, import the source and add it to the `SOURCES` array in your promnesia config. See mine [here](https://sean.fish/d/promnesia/config.py?dark)
+To use these, import the source and add it to the `SOURCES` array in your promnesia config. See mine [here](https://sean.fish/d/promnesia/config.py?redirect)
 
 ### Install
 
@@ -33,4 +33,4 @@ To Install:
 
 If you have issues importing/installing this, try a local install isntead. See [troubleshooting docs](https://github.com/seanbreckenridge/HPI/blob/master/doc/TROUBLESHOOTING_INSTALLS.md)
 
-In your config file, to enable these sources, import from `promnesia_sean`. You can see my [config file](https://sean.fish/d/promnesia/config.py?dark) as an example
+In your config file, to enable these sources, import from `promnesia_sean`. You can see my [config file](https://sean.fish/d/promnesia/config.py?redirect) as an example
