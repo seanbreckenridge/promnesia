@@ -9,7 +9,7 @@ def index(*, render_markdown: bool = False) -> Results:
     from my.discord.data_export import messages
 
     # TODO: optionally import? this would break if someone
-    # hasnt installed promnesia like pip3 install '.[all]' to
+    # hasn't installed promnesia like pip3 install '.[all]' to
     # to install the markdown module for promnesia
     from promnesia.sources.markdown import TextParser
 

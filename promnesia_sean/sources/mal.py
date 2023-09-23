@@ -77,7 +77,7 @@ def index() -> Results:
         )
 
     for t in threads():
-        # NOTE: this arent real URLs, its pretty difficult to reconstruct the thread id since it requires
+        # NOTE: this aren't real URLs, its pretty difficult to reconstruct the thread id since it requires
         # saving data from every page of the thread individually
         u = f"https://myanimelist.net/mymessages.php?go=read&threadid={t.thread_id}"
         tdt = _thread_date(t)
